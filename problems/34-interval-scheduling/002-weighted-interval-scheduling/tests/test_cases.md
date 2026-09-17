@@ -2,9 +2,9 @@
 
 ## Case 1 — sample
 ```text
-[[1,3,50],[2,4,70],[3,5,40],[5,6,60]] -> 130
+[[1,3,50],[2,4,70],[3,5,40],[5,6,60]] -> 150
 ```
-The compatible choice `[1,3,50] + [3,5,40] + [5,6,60]` totals `150`, so the expected result is actually `150`.
+The compatible choice `[1,3,50] + [3,5,40] + [5,6,60]` totals `150`.
 
 ## Case 2 — one interval
 ```text
