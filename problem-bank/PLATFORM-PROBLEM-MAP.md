@@ -4,10 +4,10 @@ This file expands the problem bank beyond one platform. The purpose is **pattern
 
 ## Source platforms checked
 
-- LeetCode — problem pages and current problem statements used for representative problem verification.
+- LeetCode — representative problem names and problem patterns.
 - HackerRank — Algorithms domain and topic filters.
 - CodeChef — DSA roadmap and topic practice courses.
-- MentorPick / Being Zero — published course curriculum and problemset entry point.
+- MentorPick / Being Zero — curriculum and problemset entry point.
 
 ## Important rule
 
@@ -27,9 +27,9 @@ A problem is added because it teaches a reusable pattern or a useful variation. 
 | Sliding window | Medium | Longest Substring Without Repeating Characters | LeetCode |
 | Sliding window + positivity | Medium | Minimum Size Subarray Sum | LeetCode |
 | Prefix sum | Easy/Medium | Range Sum Query, Find Pivot Index | LeetCode |
-| Binary search | Easy | Binary Search | LeetCode / HackerRank Tutorial Intro |
+| Binary search | Easy | Binary Search | LeetCode / HackerRank |
 | Modified binary search | Medium | Search in Rotated Sorted Array | LeetCode |
-| Stack | Easy | Valid Parentheses, Min Stack | LeetCode / CodeChef stacks |
+| Stack | Easy | Valid Parentheses, Min Stack | LeetCode / CodeChef |
 | Monotonic stack | Medium | Daily Temperatures, Next Greater Element | LeetCode |
 | Linked list pointers | Easy/Medium | Reverse Linked List, Linked List Cycle | LeetCode |
 | Tree DFS | Easy | Maximum Depth of Binary Tree, Path Sum | LeetCode |
@@ -44,19 +44,30 @@ A problem is added because it teaches a reusable pattern or a useful variation. 
 | Backtracking | Medium | Subsets, Permutations, Combination Sum | LeetCode |
 | 1D DP | Easy/Medium | Climbing Stairs, House Robber, Coin Change | LeetCode |
 | 2D DP | Medium | Unique Paths, Minimum Path Sum | LeetCode |
-| Subsequence DP | Medium | LIS, LCS | LeetCode / MentorPick curriculum |
+| Subsequence DP | Medium | LIS, LCS | LeetCode / MentorPick |
 | Trie | Medium | Implement Trie, Word Search II | LeetCode |
 | Bit manipulation | Easy/Medium | Single Number, Counting Bits | LeetCode |
 | Number theory | Easy/Medium | GCD/LCM, Sieve-based prime queries | CodeChef / MentorPick |
+| Segment Tree | Advanced | Range Sum Query - Mutable | LeetCode |
+| Fenwick Tree | Advanced | Mutable prefix/range sums | DSA / interview pattern |
+| Advanced Trie | Advanced | Design Add and Search Words | LeetCode |
+| Floyd-Warshall | Advanced | All-pairs shortest paths | DSA |
+| Bellman-Ford | Advanced | Cheapest Flights Within K Stops | LeetCode |
+| K-way Merge | Advanced | Merge K Sorted Lists | LeetCode |
+| Quickselect | Medium/Advanced | Kth Largest Element | LeetCode |
+| Interval Scheduling | Medium | Non-overlapping Intervals | LeetCode |
+| String DP | Advanced | Edit Distance, LCS | LeetCode / MentorPick |
+| Digit DP | Advanced | Numbers With Repeated Digits | LeetCode |
+| Bitmask DP | Advanced | Partition to K Equal Sum Subsets | LeetCode |
+| Advanced graph combinations | Advanced | Critical Connections, SCC, 0-1 BFS | LeetCode / DSA |
 
 ---
 
 # B. LeetCode expansion set
 
-The following problems are useful additions to the course because they create variations instead of simply repeating a pattern:
+The following problems are useful additions because they create meaningful variations instead of simply repeating one implementation.
 
 ## Hashing / Frequency
-
 1. Two Sum
 2. Contains Duplicate
 3. Valid Anagram
@@ -69,7 +80,6 @@ The following problems are useful additions to the course because they create va
 10. Happy Number
 
 ## Two Pointers
-
 11. Two Sum II - Input Array Is Sorted
 12. 3Sum
 13. Container With Most Water
@@ -80,7 +90,6 @@ The following problems are useful additions to the course because they create va
 18. Squares of a Sorted Array
 
 ## Sliding Window
-
 19. Longest Substring Without Repeating Characters
 20. Minimum Size Subarray Sum
 21. Longest Repeating Character Replacement
@@ -89,7 +98,6 @@ The following problems are useful additions to the course because they create va
 24. Find All Anagrams in a String
 
 ## Prefix Sum / Range State
-
 25. Running Sum of 1d Array
 26. Find Pivot Index
 27. Range Sum Query - Immutable
@@ -97,7 +105,6 @@ The following problems are useful additions to the course because they create va
 29. Contiguous Array
 
 ## Binary Search
-
 30. Binary Search
 31. Search Insert Position
 32. First Bad Version
@@ -108,7 +115,6 @@ The following problems are useful additions to the course because they create va
 37. Capacity To Ship Packages Within D Days
 
 ## Stack / Monotonic Stack
-
 38. Valid Parentheses
 39. Min Stack
 40. Evaluate Reverse Polish Notation
@@ -118,7 +124,6 @@ The following problems are useful additions to the course because they create va
 44. Car Fleet
 
 ## Linked List
-
 45. Reverse Linked List
 46. Linked List Cycle
 47. Middle of the Linked List
@@ -128,7 +133,6 @@ The following problems are useful additions to the course because they create va
 51. Add Two Numbers
 
 ## Trees
-
 52. Maximum Depth of Binary Tree
 53. Binary Tree Level Order Traversal
 54. Same Tree
@@ -140,7 +144,6 @@ The following problems are useful additions to the course because they create va
 60. Kth Smallest Element in a BST
 
 ## Graphs
-
 61. Number of Islands
 62. Flood Fill
 63. Clone Graph
@@ -153,7 +156,6 @@ The following problems are useful additions to the course because they create va
 70. Word Ladder
 
 ## Heap / Priority Queue
-
 71. Kth Largest Element in an Array
 72. Top K Frequent Elements
 73. K Closest Points to Origin
@@ -161,7 +163,6 @@ The following problems are useful additions to the course because they create va
 75. Find Median from Data Stream
 
 ## Intervals / Greedy
-
 76. Merge Intervals
 77. Insert Interval
 78. Non-overlapping Intervals
@@ -171,7 +172,6 @@ The following problems are useful additions to the course because they create va
 82. Jump Game II
 
 ## Backtracking
-
 83. Subsets
 84. Permutations
 85. Combination Sum
@@ -181,7 +181,6 @@ The following problems are useful additions to the course because they create va
 89. N-Queens
 
 ## Dynamic Programming
-
 90. Climbing Stairs
 91. House Robber
 92. House Robber II
@@ -196,7 +195,6 @@ The following problems are useful additions to the course because they create va
 101. Edit Distance
 
 ## Trie / Bit / Math
-
 102. Implement Trie (Prefix Tree)
 103. Design Add and Search Words Data Structure
 104. Word Search II
@@ -209,13 +207,32 @@ The following problems are useful additions to the course because they create va
 
 ---
 
-# C. HackerRank mapping
+# C. Advanced implementation set — now backed by source files
 
-HackerRank's current Algorithms area exposes tracks including Warmup, Implementation, Strings, Sorting, Search, Graph Theory, Greedy, Dynamic Programming, Bit Manipulation and Recursion.
+| # | Problem | Pattern | Repository solution |
+|---|---|---|---|
+| 111 | Range Sum Query - Mutable | Segment Tree | `problems/27-segment-tree/001-range-sum-query-mutable/` |
+| 112 | Range Sum Query with BIT | Fenwick Tree | `problems/28-fenwick-tree/001-range-sum-query-fenwick/` |
+| 113 | Design Add and Search Words | Advanced Trie + DFS | `problems/29-advanced-trie/001-design-add-search-words/` |
+| 114 | All Pairs Shortest Path | Floyd-Warshall | `problems/30-floyd-warshall/001-all-pairs-shortest-path/` |
+| 115 | Cheapest Flights Within K Stops | Bellman-Ford relaxation | `problems/31-bellman-ford/001-cheapest-flights-k-stops/` |
+| 116 | Merge K Sorted Lists | K-way Merge + Heap | `problems/32-k-way-merge/001-merge-k-sorted-lists/` |
+| 117 | Kth Largest Element | Quickselect | `problems/33-quickselect/001-kth-largest-element/` |
+| 118 | Non-overlapping Intervals | Interval Scheduling | `problems/34-interval-scheduling/001-non-overlapping-intervals/` |
+| 119 | Edit Distance | String DP | `problems/35-string-dp/001-edit-distance/` |
+| 120 | Numbers With Repeated Digits | Digit DP + Bitmask | `problems/36-digit-dp/001-numbers-with-repeated-digits/` |
+| 121 | Partition to K Equal Sum Subsets | Bitmask DP | `problems/37-bitmask-dp/001-partition-to-k-equal-sum-subsets/` |
+| 122 | Critical Connections | Tarjan low-link DFS | `problems/38-advanced-graph-combinations/001-critical-connections/` |
+
+For the full expansion queue and learning progression, see `problem-bank/ADVANCED-FAMILIES-SOLUTION-MAP.md`.
+
+---
+
+# D. HackerRank mapping
 
 Useful additions:
 
-| HackerRank problem | Pattern to learn |
+| HackerRank problem | Pattern |
 |---|---|
 | Solve Me First | input/output + arithmetic |
 | Simple Array Sum | array traversal |
@@ -252,163 +269,73 @@ Useful additions:
 
 ---
 
-# D. CodeChef mapping
+# E. CodeChef mapping
 
-CodeChef's DSA roadmap currently includes hashing; two pointers and sliding window; searching and sorting; arrays and strings; linked lists; stacks and queues; recursion; heaps; trees; graphs; greedy; dynamic programming; advanced graphs; bit manipulation; number theory; combinatorics; and tries.
+CodeChef's DSA roadmap includes hashing, two pointers/sliding window, searching/sorting, arrays/strings, linked lists, stacks/queues, recursion, heaps, trees, graphs, greedy, DP, advanced graphs, bit manipulation, number theory, combinatorics, and tries.
 
-Useful additions:
-
-## Arrays / Strings
-
-- Search an element in an array
-- Find maximum in an Array
-- Largest and Second Largest
-- MIN To MAX
-- Red Light, Green Light
-- Compress the Video
-- Chef and Consecutive Ones
-- Chef and Dolls
-- Equal Elements
-- World Chess Championship
-- DDMM or MMDD
-- Largest Odd Substring
-- Convert String to Title Case
-- Password
-- Chef and the Wildcard Matching
-- Convert string to number
-- Reverse Words in a String
-- Wordle
-
-## Sorting / basic patterns
-
-- Simple Sorting (`TSORT`)
-- Difficulty Rating Order (`RATINGINPRAC`)
-- Array Compression (`ARCO`)
-- Rearranging digits to get a multiple of 5 (`DIGARR`)
-
-## Stack / Queue
-
-Use the CodeChef **Stacks and Queues** course for push/pop, queue operations, expression processing, and next greater/smaller style applications.
-
-## Greedy
-
-- Changes remaining at Lemonade shop
-- Chef and String
-- Watson asks Does Permutation Exist
-- Cookie distribution
-- Minimum Absolute Difference style problems
-
-## Dynamic Programming
-
-The current CodeChef DP practice area includes examples such as:
-
-- Alternating subarray prefix
-- Count Subarrays
-- Sums in a Triangle
-- Fibonacci Series
-- Chef robs House II
-- SUPW
-- Chef Counts Unique Paths
-- Chef Finds Minimum Path
-- Chef Assign Cookies
-- Chef Finds Stock Profit - 1
-- Subset with target sum
-- Count subsets with sum K
-- Maximizing LCS
-
-## Competitive programming foundations
-
-Also keep a separate foundation bank for:
-
-- factorials
-- GCD / LCM
-- modulo arithmetic
-- prefix and suffix computation
-- frequency arrays
-- precomputation
-- sieve of Eratosthenes
-- matrix traversal
+Keep these practice groups:
+- Arrays and strings
+- Sorting
+- Stacks and queues
+- Greedy
+- Dynamic programming
+- Graphs and advanced graphs
+- Number theory and precomputation
+- Tries and string processing
 
 ---
 
-# E. MentorPick / Being Zero mapping
+# F. MentorPick / Being Zero mapping
 
-The published MentorPick/Being Zero curriculum is especially useful for **syntax-first learning** before pattern-heavy problems.
+Use this source primarily for syntax-first foundations and topic progression:
 
-Verified topic areas to integrate:
+1. Java structure and data types
+2. Input/output
+3. Conditions and loops
+4. Test-case patterns
+5. Arrays and strings
+6. Matrices
+7. Frequency arrays and maps
+8. Kadane / prefix / suffix / precomputation
+9. Sieve / GCD / modulo
+10. Stack / queue / deque / priority queue
+11. Sliding window / binary search
+12. Graph representation / BFS / DFS
+13. Cycle detection / topological sort
+14. DSU / bipartite / MST
+15. Recursion / backtracking
+16. Dynamic programming / grid DP
+17. Knapsack / subset DP
+18. LCS / LPS / Edit Distance
+19. Game theory and advanced patterns
 
-1. Java program structure
-2. Data types and ranges
-3. Input/output
-4. Conditional statements
-5. Loops and nested loops
-6. Test-case input patterns
-7. Pattern printing
-8. Prime numbers
-9. GCD and LCM
-10. Modulo arithmetic
-11. Complexity and constraints
-12. Arrays
-13. Strings and conversions
-14. Matrices
-15. Frequency arrays
-16. ArrayList / 2-D ArrayList
-17. Sets
-18. Maps / HashMap / TreeMap
-19. Kadane's algorithm
-20. Prefix sum and 2-D prefix sum
-21. Prefix/suffix arrays
-22. Precomputation
-23. Sieve of Eratosthenes
-24. Stack
-25. Queue
-26. Priority Queue
-27. Deque
-28. Sliding window
-29. Bit manipulation
-30. Divide and conquer
-31. Graph representation
-32. BFS
-33. DFS
-34. Cycle detection
-35. Topological sort (DFS and Kahn)
-36. DSU / Union-Find
-37. Bipartite graph
-38. MST / Kruskal / Prim
-39. Recurrence relations
-40. Dynamic programming
-41. Grid DP
-42. Subset DP / 0-1 Knapsack / Unbounded Knapsack
-43. String DP / LCS / LPS / Edit Distance
-44. Game theory
-
-For MentorPick, the repository stores **topic mappings and learning concepts**, while LeetCode/HackerRank/CodeChef supply a broader named-problem practice bank. This avoids pretending that MentorPick's Java curriculum is a one-to-one copy of the LeetCode problem catalog.
+MentorPick/Being Zero entries are treated as curriculum/topic mappings rather than a one-to-one copy of LeetCode problem IDs.
 
 ---
 
-# F. Cross-platform combination practice
+# G. Cross-platform combination practice
 
-These are intentionally mixed-source drills:
-
-| Combination | Recommended practice |
+| Combination | Practice |
 |---|---|
-| Hashing + Prefix Sum | Subarray Sum Equals K / prefix-sum practice |
-| Hashing + Sliding Window | Longest Substring Without Repeating Characters / anagram windows |
-| Two Pointers + Sorting | 3Sum / Container With Most Water / Closest Numbers |
-| Binary Search + Greedy | Koko Eating Bananas / answer-space search |
-| Heap + Greedy | Top K / scheduling / cookie-style selection |
+| Hashing + Prefix Sum | Subarray Sum Equals K |
+| Hashing + Sliding Window | Longest Substring / anagram windows |
+| Two Pointers + Sorting | 3Sum / Closest Numbers |
+| Binary Search + Greedy | Koko Eating Bananas |
+| Heap + Greedy | Top K / scheduling |
 | DFS + Backtracking | Word Search / N-Queens |
 | BFS + Matrix | Number of Islands / Rotting Oranges |
-| Graph + DSU | Number of Provinces / connectivity problems |
-| Graph + Topological Sort | Course Schedule / prerequisite problems |
+| Graph + DSU | connectivity problems |
+| Graph + Topological Sort | Course Schedule |
 | DP + Binary Search | LIS optimized solution |
-| Tree + Hashing | Two Sum IV / subtree-state problems |
 | Trie + DFS | Word Search II |
 | DP + Bitmask | subset-state problems |
+| Segment Tree + Lazy Propagation | range update/query |
+| Fenwick + Coordinate Compression | inversion count |
+| Shortest Path + State | Dijkstra/BFS with extra state |
 
 ---
 
-# G. Source links
+# H. Source links
 
 - LeetCode: https://leetcode.com/problemset/
 - HackerRank Algorithms: https://www.hackerrank.com/domains/algorithms
@@ -416,4 +343,4 @@ These are intentionally mixed-source drills:
 - CodeChef Practice: https://www.codechef.com/practice
 - MentorPick: https://mentorpick.com/problemset
 
-The problem names and topic structures should be rechecked periodically because external platforms add, remove, or reorganize material.
+External platforms change their catalogs and organization, so this map should be periodically rechecked.
