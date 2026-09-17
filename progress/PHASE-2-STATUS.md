@@ -7,10 +7,10 @@ This phase turns the taxonomy into executable learning modules.
 | Pattern | Representative problem | Java | Python | Explanation |
 |---|---|---:|---:|---:|
 | Hashing | Two Sum | ✅ | ✅ | ✅ |
-| Two Pointers | Two Sum II | ⬜ | ⬜ | ⬜ |
-| Sliding Window | Longest Substring Without Repeating Characters | ⬜ | ⬜ | ⬜ |
-| Prefix Sum | Subarray Sum Equals K | ⬜ | ⬜ | ⬜ |
-| Binary Search | Binary Search | ⬜ | ⬜ | ⬜ |
+| Two Pointers | Two Sum II | ✅ | ✅ | ✅ |
+| Sliding Window | Longest Substring Without Repeating Characters | ✅ | ✅ | ✅ |
+| Prefix Sum | Subarray Sum Equals K | ✅ | ✅ | ✅ |
+| Binary Search | Binary Search | ✅ | ✅ | ✅ |
 | Stack | Valid Parentheses | ⬜ | ⬜ | ⬜ |
 | Monotonic Stack | Daily Temperatures | ⬜ | ⬜ | ⬜ |
 | Linked List | Linked List Cycle | ⬜ | ⬜ | ⬜ |
