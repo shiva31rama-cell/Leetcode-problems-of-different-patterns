@@ -16,18 +16,18 @@ Each node represents an interval and stores its sum. A point update changes one 
 ## Syntax template
 ### Java
 ```java
-class SegmentTree {
+class NumArray {
     int[] tree;
     void update(int index, int value) { }
-    int query(int left, int right) { }
+    int sumRange(int left, int right) { }
 }
 ```
 ### Python
 ```python
-class SegmentTree:
+class NumArray:
     def update(self, index, value):
         pass
-    def query(self, left, right):
+    def sumRange(self, left, right):
         pass
 ```
 
@@ -49,7 +49,7 @@ flowchart TD
     E --> H[Recalculate ancestors]
 ```
 
-Example: for `[1,3,5,7]`, a query `[1,3]` combines covered tree segments instead of scanning every element.
+Example: for `[1,3,5,7]`, a query `[1,3]` combines covered tree segments instead of scanning every array element.
 
 | Step | Action | State |
 |---|---|---|
@@ -65,6 +65,6 @@ Example: for `[1,3,5,7]`, a query `[1,3]` combines covered tree segments instead
 See `tests/test_cases.md`.
 
 ## Files
-- Java: `java/Solution.java`
+- Java: `java/NumArray.java`
 - Python: `python/solution.py`
 - Tests: `tests/test_cases.md`
