@@ -43,10 +43,39 @@ This is the curated inventory, not a dump of every platform problem. Problems ar
 | 35 | LeetCode | Single Number | Easy | XOR / Bit Manipulation | Foundation | Planned |
 | 36 | LeetCode | Counting Bits | Easy | Bit Manipulation / DP | Bridge | Planned |
 
+## Advanced Variation Set
+
+| # | Source | Problem | Difficulty | Pattern | Repository |
+|---:|---|---|---|---|---|
+| 123 | General DSA | Lazy Segment Tree — Range Add + Range Sum | Advanced | Segment Tree + Lazy Propagation | `problems/27-segment-tree/002-lazy-propagation-range-sum/` |
+| 124 | General DSA | Inversion Count + Coordinate Compression | Advanced | Fenwick Tree + Compression | `problems/28-fenwick-tree/002-inversion-count-coordinate-compression/` |
+| 125 | LeetCode 421 | Maximum XOR Pair | Advanced | Binary Trie | `problems/29-advanced-trie/002-maximum-xor-pair/` |
+| 126 | General DSA | Strongly Connected Components | Advanced | Tarjan Low-Link DFS | `problems/38-advanced-graph-combinations/002-strongly-connected-components/` |
+| 127 | General DSA | 0-1 BFS | Advanced | Deque Shortest Path | `problems/38-advanced-graph-combinations/003-zero-one-bfs/` |
+| 128 | LeetCode 1143 | Longest Common Subsequence | Medium/Advanced | String DP | `problems/35-string-dp/002-longest-common-subsequence/` |
+| 129 | General DSA | Traveling Salesperson Problem | Advanced | Bitmask DP | `problems/37-bitmask-dp/002-traveling-salesperson/` |
+| 130 | General DSA | Weighted Interval Scheduling | Advanced | Interval DP + Binary Search | `problems/34-interval-scheduling/002-weighted-interval-scheduling/` |
+
 ## Selection Status
 
-This is the **seed set**. It is deliberately not the final catalog. Each pattern will be analyzed for coverage, redundancy, difficulty progression, and combinations before more problems are admitted.
+This catalog intentionally grows by **pattern coverage and variation**, not raw problem count. The advanced variation set is backed by source files with Java, Python, tests, and Visualize sections.
 
-## Source Expansion
+## Cross-Platform Sources
 
-LeetCode is the initial reference corpus. Useful problems from CodeChef, HackerRank, MentorPick, and other practice sources will be mapped into the same taxonomy when they add a distinct learning value.
+Problems are mapped across:
+
+- LeetCode
+- HackerRank
+- CodeChef
+- MentorPick / Being Zero
+- HackerEarth
+- CodeSignal
+- CoderPad
+- Codility
+- Kiwi TCMS
+- OpenRank Alpha
+- Exercism
+
+See [`PLATFORM-PROBLEM-MAP.md`](PLATFORM-PROBLEM-MAP.md) and [`PLATFORM-INTEGRATION.md`](PLATFORM-INTEGRATION.md) for the transfer and test-management layer.
+
+`AlphaExercism` is not treated as a verified external platform because no authoritative current source for that exact name was found; it remains a user-supplied label only.
