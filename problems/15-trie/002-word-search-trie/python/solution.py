@@ -5,42 +5,43 @@ class TrieNode:
 
 
 class Solution:
-    def exist(self, board: list[list[str]], word: str) -> bool:
+    def findWords(self, board: list[list[str]], words: list[str]) -> list[str]:
         root = TrieNode()
-        self._insert(root, word)
+
+        for word in words:
+            self._insert(root, word)
 
         rows = len(board)
         cols = len(board[0])
         directions = ((1, 0), (-1, 0), (0, 1), (0, -1))
+        answer = []
 
         def dfs(r, c, node):
             if r < 0 or c < 0 or r >= rows or c >= cols:
-                return False
+                return
 
             ch = board[r][c]
             if ch == "#" or ch not in node.children:
-                return False
+                return
 
             next_node = node.children[ch]
+
             if next_node.word is not None:
-                return True
+                answer.append(next_node.word)
+                next_node.word = None  # avoid duplicate output
 
             board[r][c] = "#"
 
             for dr, dc in directions:
-                if dfs(r + dr, c + dc, next_node):
-                    board[r][c] = ch
-                    return True
+                dfs(r + dr, c + dc, next_node)
 
             board[r][c] = ch
-            return False
 
         for r in range(rows):
             for c in range(cols):
-                if dfs(r, c, root):
-                    return True
+                dfs(r, c, root)
 
-        return False
+        return answer
 
     def _insert(self, root, word):
         node = root
