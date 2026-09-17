@@ -8,6 +8,13 @@ This file expands the problem bank beyond one platform. The purpose is **pattern
 - HackerRank — Algorithms domain and topic filters.
 - CodeChef — DSA roadmap and topic practice courses.
 - MentorPick / Being Zero — curriculum and problemset entry point.
+- HackerEarth — coding challenges and assessment/problem-setting workflows.
+- CodeSignal — coding assessment and interview practice workflows.
+- CoderPad — collaborative coding interview/IDE workflow.
+- Codility — technical screening and deterministic task/test workflow.
+- Kiwi TCMS — manual/automated test management and reporting.
+- OpenRank Alpha — open-source coding challenge / contest platform.
+- Exercism — programming-language practice and mentoring.
 
 ## Important rule
 
@@ -207,7 +214,7 @@ The following problems are useful additions because they create meaningful varia
 
 ---
 
-# C. Advanced implementation set — now backed by source files
+# C. Advanced implementation set — backed by source files
 
 | # | Problem | Pattern | Repository solution |
 |---|---|---|---|
@@ -223,8 +230,17 @@ The following problems are useful additions because they create meaningful varia
 | 120 | Numbers With Repeated Digits | Digit DP + Bitmask | `problems/36-digit-dp/001-numbers-with-repeated-digits/` |
 | 121 | Partition to K Equal Sum Subsets | Bitmask DP | `problems/37-bitmask-dp/001-partition-to-k-equal-sum-subsets/` |
 | 122 | Critical Connections | Tarjan low-link DFS | `problems/38-advanced-graph-combinations/001-critical-connections/` |
+| 123 | Lazy Segment Tree — Range Add + Range Sum | Segment Tree | `problems/27-segment-tree/002-lazy-propagation-range-sum/` |
+| 124 | Inversion Count + Coordinate Compression | Fenwick Tree | `problems/28-fenwick-tree/002-inversion-count-coordinate-compression/` |
+| 125 | Maximum XOR Pair | Binary Trie | `problems/29-advanced-trie/002-maximum-xor-pair/` |
+| 126 | Strongly Connected Components | Tarjan SCC | `problems/38-advanced-graph-combinations/002-strongly-connected-components/` |
+| 127 | 0-1 BFS | Deque shortest path | `problems/38-advanced-graph-combinations/003-zero-one-bfs/` |
+| 128 | Longest Common Subsequence | String DP | `problems/35-string-dp/002-longest-common-subsequence/` |
+| 129 | Traveling Salesperson | Bitmask DP | `problems/37-bitmask-dp/002-traveling-salesperson/` |
+| 130 | Weighted Interval Scheduling | Interval DP + Binary Search | `problems/34-interval-scheduling/002-weighted-interval-scheduling/` |
 
-For the full expansion queue and learning progression, see `problem-bank/ADVANCED-FAMILIES-SOLUTION-MAP.md`.
+For the detailed progression, see `problem-bank/ADVANCED-FAMILIES-SOLUTION-MAP.md`.
+For platform adaptation rules, see `problem-bank/PLATFORM-INTEGRATION.md`.
 
 ---
 
@@ -313,7 +329,70 @@ MentorPick/Being Zero entries are treated as curriculum/topic mappings rather th
 
 ---
 
-# G. Cross-platform combination practice
+# G. Additional platform integration mapping
+
+## HackerEarth
+
+Use repository modules as reusable coding-challenge seeds. Keep the algorithm source unchanged and provide stdin/stdout or the platform's expected function wrapper. The repository's test cases become visible examples plus a source for additional deterministic cases.
+
+Recommended advanced transfers:
+- Lazy Segment Tree → range update/query challenge
+- Inversion Count → sorting/inversion challenge
+- SCC / 0-1 BFS → graph algorithm challenge
+- TSP Bitmask DP → small-`n` optimization challenge
+
+## CodeSignal
+
+Use function-oriented `Solution.java` / `solution.py` methods as the algorithm core. The assessment layer can attach deterministic cases to the same method. Repository README explanations provide the learner-facing invariant and complexity notes.
+
+Recommended advanced transfers:
+- Maximum XOR Pair
+- LCS
+- Weighted Interval Scheduling
+- 0-1 BFS
+
+## CoderPad
+
+Use the code as a live interview exercise. Ask the learner to explain the invariant, write the method, run the repository test cases, and discuss complexity/tradeoffs.
+
+Recommended discussion prompts:
+- Why does lazy propagation defer updates?
+- Why does 0-1 BFS use a deque?
+- Why does `dp[mask][last]` need the last city in TSP?
+
+## Codility
+
+Treat each module as a deterministic assessment task. Keep a clear function signature, edge cases, and regression cases. Platform-specific boilerplate should stay outside the algorithm source.
+
+Recommended test partitions:
+- normal case;
+- boundary case;
+- duplicate/repeated-value case;
+- empty/unreachable case where relevant;
+- performance case.
+
+## Kiwi TCMS
+
+Kiwi TCMS is a test-management system, so the integration target is **test organization**, not code execution in the repository itself. Each `tests/test_cases.md` can be converted into a test plan with case IDs, inputs, expected results, tags, and regression notes.
+
+Recommended case tags:
+`smoke`, `boundary`, `edge`, `regression`, `performance`, `negative`, `duplicate`.
+
+## OpenRank Alpha
+
+OpenRank Alpha is an open-source coding-challenge platform project. Repository problems can be adapted into contest questions with statement, sample input/output, custom tests, score, and evaluation metadata. Keep the canonical Java/Python algorithm source in this repository and build platform-specific packaging around it.
+
+## Exercism
+
+Exercism is a language-practice and mentoring platform. Use the Java/Python implementations as reference concepts, but rewrite exercises idiomatically for the target language and attach the exercise's own tests. Do not present repository files as official Exercism exercises.
+
+## AlphaExercism
+
+No authoritative current platform/source for the exact name **AlphaExercism** was verified. This repository therefore records the label but does not invent an external API, problem catalog, or integration endpoint for it.
+
+---
+
+# H. Cross-platform combination practice
 
 | Combination | Practice |
 |---|---|
@@ -331,16 +410,28 @@ MentorPick/Being Zero entries are treated as curriculum/topic mappings rather th
 | DP + Bitmask | subset-state problems |
 | Segment Tree + Lazy Propagation | range update/query |
 | Fenwick + Coordinate Compression | inversion count |
-| Shortest Path + State | Dijkstra/BFS with extra state |
+| Binary Trie + Bitwise Greedy | maximum XOR |
+| Graph + Low-Link | SCC / bridges / articulation structure |
+| 0-1 BFS + Deque | binary-weight shortest path |
+| String DP | LCS / Edit Distance |
+| Bitmask DP | TSP / assignment / visit-all states |
+| Interval + DP | weighted scheduling |
 
 ---
 
-# H. Source links
+# I. Source links
 
 - LeetCode: https://leetcode.com/problemset/
 - HackerRank Algorithms: https://www.hackerrank.com/domains/algorithms
 - CodeChef DSA Roadmap: https://www.codechef.com/roadmap/data-structures-and-algorithms
 - CodeChef Practice: https://www.codechef.com/practice
 - MentorPick: https://mentorpick.com/problemset
+- HackerEarth Challenges: https://www.hackerearth.com/challenges/
+- CodeSignal: https://support.codesignal.com/
+- CoderPad: https://coderpad.io/platform/
+- Codility: https://www.codility.com/platform/
+- Kiwi TCMS: https://kiwitcms.readthedocs.io/en/latest/about.html
+- OpenRank Alpha: https://github.com/onkea/OpenRank
+- Exercism: https://exercism.org/
 
-External platforms change their catalogs and organization, so this map should be periodically rechecked.
+External platforms change their catalogs and organization, so mappings should be periodically rechecked.
