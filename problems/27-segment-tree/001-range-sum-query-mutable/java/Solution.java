@@ -1,8 +1,8 @@
-public class Solution {
-    private int[] tree;
-    private int n;
+public class NumArray {
+    private final int[] tree;
+    private final int n;
 
-    public Solution(int[] nums) {
+    public NumArray(int[] nums) {
         n = nums.length;
         tree = new int[4 * Math.max(1, n)];
         if (n > 0) build(nums, 1, 0, n - 1);
@@ -19,8 +19,8 @@ public class Solution {
         tree[node] = tree[node * 2] + tree[node * 2 + 1];
     }
 
-    public void update(int index, int value) {
-        if (n > 0) update(1, 0, n - 1, index, value);
+    public void update(int index, int val) {
+        if (n > 0) update(1, 0, n - 1, index, val);
     }
 
     private void update(int node, int left, int right, int index, int value) {
