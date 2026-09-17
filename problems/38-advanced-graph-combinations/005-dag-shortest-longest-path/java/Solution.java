@@ -1,0 +1,4 @@
+import java.util.*;
+public class Solution {
+ public long[] path(int n,int[][]edges,int source,boolean longest){List<int[]>[]g=new ArrayList[n];int[]in=new int[n];for(int i=0;i<n;i++)g[i]=new ArrayList<>();for(int[]e:edges){g[e[0]].add(new int[]{e[1],e[2]});in[e[1]]++;}Deque<Integer>q=new ArrayDeque<>();for(int i=0;i<n;i++)if(in[i]==0)q.add(i);List<Integer>order=new ArrayList<>();while(!q.isEmpty()){int v=q.poll();order.add(v);for(int[]e:g[v])if(--in[e[0]]==0)q.add(e[0]);}long INF=Long.MAX_VALUE/4;long[]d=new long[n];Arrays.fill(d,longest?-INF:INF);d[source]=0;for(int v:order)if(d[v]!= (longest?-INF:INF))for(int[]e:g[v])d[e[0]]=longest?Math.max(d[e[0]],d[v]+e[1]):Math.min(d[e[0]],d[v]+e[1]);return d;}
+}
