@@ -1,0 +1,89 @@
+name: Validate DSA Sources
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  python-syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile Python solutions
+        shell: bash
+        run: |
+          set -e
+          while IFS= read -r -d '' file; do
+            python -m py_compile "$file"
+          done < <(find problems -type f -name 'solution.py' -print0)
+
+  java-compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Compile Java solutions
+        shell: bash
+        run: |
+          set -e
+          mkdir -p /tmp/dsa-java
+          while IFS= read -r -d '' file; do
+            javac -d /tmp/dsa-java "$file"
+          done < <(find problems -type f -path '*/java/Solution.java' -print0)
+
+  repository-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check advanced-module structure
+        shell: bash
+        run: |
+          set -e
+          for dir in \
+            problems/27-segment-tree/002-lazy-propagation-range-sum \
+            problems/28-fenwick-tree/002-inversion-count-coordinate-compression \
+            problems/29-advanced-trie/002-maximum-xor-pair \
+            problems/35-string-dp/002-longest-common-subsequence \
+            problems/37-bitmask-dp/002-traveling-salesperson \
+            problems/34-interval-scheduling/002-weighted-interval-scheduling \
+            problems/38-advanced-graph-combinations/002-strongly-connected-components \
+            problems/38-advanced-graph-combinations/003-zero-one-bfs
+          do
+            test -f "$dir/README.md"
+            test -f "$dir/java/Solution.java"
+            test -f "$dir/python/solution.py"
+            test -f "$dir/tests/test_cases.md"
+          done
+
+      - name: Check Visualize sections
+        shell: bash
+        run: |
+          set -e
+          for file in \
+            problems/27-segment-tree/002-lazy-propagation-range-sum/README.md \
+            problems/28-fenwick-tree/002-inversion-count-coordinate-compression/README.md \
+            problems/29-advanced-trie/002-maximum-xor-pair/README.md \
+            problems/35-string-dp/002-longest-common-subsequence/README.md \
+            problems/37-bitmask-dp/002-traveling-salesperson/README.md \
+            problems/34-interval-scheduling/002-weighted-interval-scheduling/README.md \
+            problems/38-advanced-graph-combinations/002-strongly-connected-components/README.md \
+            problems/38-advanced-graph-combinations/003-zero-one-bfs/README.md
+          do
+            grep -q '👁️ Visualize Mode' "$file"
+          done
