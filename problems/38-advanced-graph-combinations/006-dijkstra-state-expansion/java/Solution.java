@@ -1,0 +1,4 @@
+import java.util.*;
+public class Solution {
+ public long shortestWithOneDiscount(int n,int[][]edges,int s,int t){List<int[]>[]g=new ArrayList[n];for(int i=0;i<n;i++)g[i]=new ArrayList<>();for(int[]e:edges)g[e[0]].add(new int[]{e[1],e[2]});long INF=Long.MAX_VALUE/4;long[][]d=new long[n][2];for(long[]a:d)Arrays.fill(a,INF);d[s][0]=0;PriorityQueue<long[]>pq=new PriorityQueue<>(Comparator.comparingLong(a->a[0]));pq.add(new long[]{0,s,0});while(!pq.isEmpty()){long[]x=pq.poll();long dist=x[0];int u=(int)x[1],used=(int)x[2];if(dist!=d[u][used])continue;for(int[]e:g[u]){int v=e[0],w=e[1];if(d[v][used]>dist+w){d[v][used]=dist+w;pq.add(new long[]{d[v][used],v,used});}if(used==0&&d[v][1]>dist+w/2){d[v][1]=dist+w/2;pq.add(new long[]{d[v][1],v,1});}}}return Math.min(d[t][0],d[t][1]);}
+}
