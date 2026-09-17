@@ -8,10 +8,7 @@
 Digit DP counts integers up to a bound by processing digits from left to right while remembering which digits have already appeared.
 
 ## Recognition
-Use digit DP when:
-- the upper bound is large
-- the property is about decimal digits
-- the answer depends on a prefix and whether the current prefix is already smaller than the bound
+Use digit DP when the bound is large, the property is about decimal digits, and the answer depends on the prefix plus whether it is still equal to the bound prefix.
 
 ## State
 `pos` = current digit position.
@@ -19,7 +16,7 @@ Use digit DP when:
 `started` = whether a non-leading-zero digit has appeared.
 `tight` = whether the prefix still equals the bound prefix.
 
-We count numbers with **unique digits**, then subtract from `n` to obtain numbers with repeated digits.
+We count positive integers with unique digits, then subtract that count from `n` to obtain the repeated-digit count.
 
 ## Syntax template
 ### Java
@@ -34,7 +31,7 @@ def dfs(pos, mask, tight, started):
 ```
 
 ## Complexity
-With 10 decimal digits: roughly `O(D * 2^10 * 10)` states, where `D` is the number of digits.
+With decimal digits, the state space is roughly `O(D * 2^10 * 2 * 2)` and each state tries at most 10 digits.
 
 ## 👁️ Visualize Mode
 ```mermaid
@@ -42,18 +39,18 @@ flowchart TD
     A[Choose digit at position] --> B{Already used?}
     B -->|Yes| C[Skip]
     B -->|No| D[Set bit in mask]
-    D --> E{At bound?}
+    D --> E{Still equal to bound?}
     E --> F[Update tight]
     F --> G[Next position]
     G --> A
 ```
 
-Example bound `20`: the prefix `1` is below the bound, so the next digit can be chosen more freely. Leading zero is not counted as a used digit.
+Example bound `20`: choosing `1` at the first position makes the next position unrestricted by the upper bound; choosing `2` keeps the second digit restricted to `0`.
 
 ## Sample
 Input: `n=20`
 
-Numbers with repeated digits: `1` (`0` is excluded from the positive-number count), and `11` is the first positive repeated-digit number, so the LeetCode result is `1`.
+The only positive integer from `1..20` with a repeated digit is `11`, so the output is `1`.
 
 ## Tests
 See `tests/test_cases.md`.
