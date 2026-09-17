@@ -1,23 +1,125 @@
-# Trie + Word Search
+# Trie + Word Search II
 
 **Pattern:** Trie + DFS / Backtracking
 
-## Simple idea
-Store words in a Trie so that DFS can quickly tell whether the current character path can still form a word.
+## What is the topic?
 
-## Recognition
+A **Trie** stores words by shared prefixes. In a grid word-search problem, DFS explores possible paths while the Trie tells us whether the current path can still become a word.
+
+This is a combination pattern:
+
+```text
+Trie = prefix checking
+DFS = explore the grid
+Backtracking = choose a cell, explore, then undo
+```
+
+## Recognition clues
+
+Use this combination when:
+
+- You have many words.
 - Many words share prefixes.
-- You repeatedly ask whether a character sequence is a prefix of a known word.
-- A grid traversal must generate candidate words.
+- A board/grid must generate candidate words.
+- You want to stop a path as soon as it cannot match any known word.
 
-## Brute force
-Build strings during DFS and search the word list repeatedly.
+## Core syntax — Java
 
-## Optimized idea
-Build the Trie once. During DFS, stop immediately when the current path is not a Trie prefix.
+```java
+class TrieNode {
+    Map<Character, TrieNode> children = new HashMap<>();
+    String word;
+}
+
+void insert(TrieNode root, String word) {
+    TrieNode node = root;
+
+    for (char ch : word.toCharArray()) {
+        node = node.children.computeIfAbsent(ch, key -> new TrieNode());
+    }
+
+    node.word = word;
+}
+```
+
+DFS state:
+
+```java
+if (next.word != null) {
+    answer.add(next.word);
+    next.word = null;
+}
+
+board[r][c] = '#';
+// explore 4 directions
+board[r][c] = originalChar;
+```
+
+## Core syntax — Python
+
+```python
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.word = None
+```
+
+Insertion:
+
+```python
+node = root
+for ch in word:
+    node = node.children.setdefault(ch, TrieNode())
+node.word = word
+```
+
+DFS uses the same choose → explore → undo structure.
+
+## Sample input
+
+```text
+board = [
+    ["o","a","a","n"],
+    ["e","t","a","e"],
+    ["i","h","k","r"],
+    ["i","f","l","v"]
+]
+words = ["oath","pea","eat","rain"]
+```
+
+## Sample output
+
+```text
+["eat", "oath"]
+```
+
+Order may differ depending on traversal order; the important result is the set of found words.
+
+## Test cases
+
+### Test 1 — standard
+
+```text
+Input: board above, words = [oath, pea, eat, rain]
+Expected: {oath, eat}
+```
+
+### Test 2 — no word
+
+```text
+board = [[a,b],[c,d]]
+words = ["xyz"]
+Expected: []
+```
+
+### Test 3 — duplicate word in input
+
+The implementation should avoid returning the same discovered word more than once.
 
 ## Complexity
-The exact complexity depends on the grid, word count, and word lengths; the Trie mainly reduces repeated prefix checking.
+
+The exact runtime depends on the grid size, number of words, and word lengths. The Trie reduces repeated prefix work, while DFS explores valid character paths only.
 
 ## Pattern lesson
-Patterns can combine. Here, **Trie handles prefix state** while **DFS/backtracking explores paths**.
+
+This module is important because real DSA questions often combine patterns. Do not memorize Trie, DFS, and Backtracking independently only; learn to recognize when they should work together.
