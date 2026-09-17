@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSA Pattern Visualize Mode</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 1000px; margin: 0 auto; padding: 24px; line-height: 1.5; }
+    h1 { margin-bottom: 6px; }
+    .controls { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
+    select, input, button { padding: 10px; font-size: 16px; }
+    button { cursor: pointer; }
+    .panel { border: 1px solid #ccc; border-radius: 10px; padding: 18px; margin-top: 14px; }
+    .array { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+    .cell { min-width: 44px; padding: 10px 8px; text-align: center; border: 2px solid #999; border-radius: 8px; }
+    .active { border-color: #111; font-weight: bold; }
+    .muted { color: #666; }
+    pre { overflow-x: auto; background: #f5f5f5; padding: 14px; border-radius: 8px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 12px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  </style>
+</head>
+<body>
+  <h1>👁️ DSA Pattern Visualize Mode</h1>
+  <p class="muted">Choose a pattern and move through its algorithm state one step at a time.</p>
+
+  <div class="controls">
+    <label>Pattern
+      <select id="pattern">
+        <option value="two-pointers">Two Pointers</option>
+        <option value="sliding-window">Sliding Window</option>
+        <option value="binary-search">Binary Search</option>
+        <option value="stack">Stack</option>
+        <option value="queue">BFS Queue</option>
+        <option value="heap">Heap</option>
+        <option value="prefix-sum">Prefix Sum</option>
+        <option value="dp">1D DP</option>
+        <option value="backtracking">Backtracking</option>
+      </select>
+    </label>
+    <button id="reset" type="button">Reset</button>
+    <button id="previous" type="button">Previous</button>
+    <button id="next" type="button">Next</button>
+  </div>
+
+  <div class="panel">
+    <h2 id="title"></h2>
+    <p id="description"></p>
+    <div id="visual"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Current step</h2>
+    <p id="step"></p>
+    <p id="action"></p>
+    <p id="invariant"></p>
+  </div>
+
+<script>
+const examples = {
+  "two-pointers": {
+    title: "Two Pointers — Pair Sum",
+    description: "Use a left pointer and right pointer on sorted data.",
+    invariant: "Everything outside the active pointer range has already been ruled out.",
+    states: [
+      [0, 4, "Start: left=0, right=4"],
+      [1, 4, "Sum is too small, move left"],
+      [1, 3, "Sum is too large, move right"],
+      [2, 3, "Target pair found"]
+    ]
+  },
+  "sliding-window": {
+    title: "Sliding Window — Longest Valid Window",
+    description: "Expand right, and move left whenever the window becomes invalid.",
+    invariant: "The displayed window is always valid after the repair step.",
+    states: [
+      [0, 0, "Window contains the first element"],
+      [0, 1, "Expand window"],
+      [1, 2, "Remove the left element to restore validity"],
+      [1, 3, "Expand again"]
+    ]
+  },
+  "binary-search": {
+    title: "Binary Search",
+    description: "Repeatedly discard half of the sorted search space.",
+    invariant: "If the target exists, it remains inside [left, right].",
+    states: [
+      [0, 6, "Initial search range"],
+      [0, 2, "Target is in the left half"],
+      [2, 2, "One candidate remains"],
+      [2, 2, "Target found"]
+    ]
+  },
+  "stack": {
+    title: "Stack — LIFO",
+    description: "The most recently pushed item is processed first.",
+    invariant: "The top item is always the next item eligible for pop.",
+    states: [
+      ["[ ]", "Start"],
+      ["[ ( ]", "Push opening bracket"],
+      ["[ ( [ ]", "Push another opening bracket"],
+      ["[ ( ]", "Pop the matching item"]
+    ]
+  },
+  "queue": {
+    title: "BFS Queue",
+    description: "BFS processes nodes level by level using FIFO order.",
+    invariant: "Nodes leave the queue in nondecreasing distance from the source.",
+    states: [
+      ["[A]", "Start at source"],
+      ["[B,C]", "Add neighbors of A"],
+      ["[C,D,E]", "Process B and add its new neighbor"],
+      ["[D,E]", "Continue the next level"]
+    ]
+  },
+  "heap": {
+    title: "Heap — Repeated Minimum",
+    description: "A min-heap keeps the smallest priority at the top.",
+    invariant: "The root is always the smallest item in the heap.",
+    states: [
+      ["[5]", "Insert 5"],
+      ["[3,5]", "Insert 3 and restore heap order"],
+      ["[2,5,3]", "Insert 2 and restore heap order"],
+      ["[3,5]", "Pop the minimum"]
+    ]
+  },
+  "prefix-sum": {
+    title: "Prefix Sum",
+    description: "Store cumulative totals so a range sum becomes a subtraction.",
+    invariant: "prefix[i] stores the sum of elements before or through the chosen boundary.",
+    states: [
+      [0, "Before reading input"],
+      [2, "Read 2"],
+      [7, "Read 5"],
+      [10, "Read 3; range sums can now use subtraction"]
+    ]
+  },
+  "dp": {
+    title: "1D Dynamic Programming",
+    description: "Build an answer from smaller already-solved states.",
+    invariant: "Every dp entry represents the agreed meaning of its state definition.",
+    states: [
+      ["dp[0]=0", "Base case"],
+      ["dp[1]=1", "Solve state 1"],
+      ["dp[2]=2", "Use previous states"],
+      ["dp[3]=3", "Continue state transition"]
+    ]
+  },
+  "backtracking": {
+    title: "Backtracking",
+    description: "Choose, explore, then undo the choice before trying another branch.",
+    invariant: "The current path contains exactly the choices made on the current recursion branch.",
+    states: [
+      ["[]", "Start"],
+      ["[1]", "Choose 1"],
+      ["[1,2]", "Explore deeper"],
+      ["[1]", "Undo 2 and try another choice"]
+    ]
+  }
+};
+
+let index = 0;
+const pattern = document.getElementById('pattern');
+const title = document.getElementById('title');
+const description = document.getElementById('description');
+const visual = document.getElementById('visual');
+const step = document.getElementById('step');
+const action = document.getElementById('action');
+const invariant = document.getElementById('invariant');
+
+function render() {
+  const example = examples[pattern.value];
+  index = Math.max(0, Math.min(index, example.states.length - 1));
+  const state = example.states[index];
+  title.textContent = example.title;
+  description.textContent = example.description;
+  step.textContent = `Step ${index + 1} of ${example.states.length}`;
+  action.textContent = `Action: ${state[state.length - 1]}`;
+  invariant.textContent = `Invariant: ${example.invariant}`;
+
+  visual.innerHTML = '';
+  const box = document.createElement('div');
+  box.className = 'array';
+  const values = Array.isArray(state[0]) ? state[0] : [state[0]];
+  values.forEach((value, i) => {
+    const cell = document.createElement('div');
+    cell.className = 'cell' + (i === 0 ? ' active' : '');
+    cell.textContent = value;
+    box.appendChild(cell);
+  });
+  visual.appendChild(box);
+}
+
+pattern.addEventListener('change', () => { index = 0; render(); });
+document.getElementById('reset').addEventListener('click', () => { index = 0; render(); });
+document.getElementById('previous').addEventListener('click', () => { index--; render(); });
+document.getElementById('next').addEventListener('click', () => { index++; render(); });
+render();
+</script>
+</body>
+</html>
